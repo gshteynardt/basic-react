@@ -1,0 +1,51 @@
+{
+  "name": "basic-10-09",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:3001/",
+  "dependencies": {
+    "connected-react-router": "^4.5.0",
+    "history": "^4.7.2",
+    "immutable": "^4.0.0-rc.10",
+    "jest-cli": "^20.0.4",
+    "prop-types": "^15.6.2",
+    "react": "^16.5.0",
+    "react-addons-css-transition-group": "^15.6.2",
+    "react-day-picker": "^7.2.4",
+    "react-dom": "^16.5.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.5",
+    "react-select": "^2.0.0",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^3.0.1"
+  },
+  "scripts": {
+    "start": "concurrently \"react-scripts start\" \"npm run api\"",
+    "api": "node simple_api/server.js",
+    "build": "react-scripts build",
+    "prettier": "prettier --write \"src/**/*.js\"",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "devDependencies": {
+    "concurrently": "^3.6.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "husky": "^1.0.0-rc.6",
+    "lint-staged": "^7.1.0",
+    "prettier": "^1.12.1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run prettier",
+      "git add"
+    ]
+  }
+}
