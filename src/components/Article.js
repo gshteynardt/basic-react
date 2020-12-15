@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 
 class Article extends PureComponent {
   render() {
-    console.log('rendered')
     const { article, isOpen } = this.props
     return (
       <div>
