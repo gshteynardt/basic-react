@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const originalComponent = (WrappedComponent) => {
-  class HOC extends React.Component {
-    render() {
-      return <WrappedComponent {...this.props} />
-    }
-  }
-  return HOC
+const originalComponent = (WrappedComponent) => (props) => {
+  const [openItemId, setOpenItemId] = useState(null)
+
+  return (
+    <WrappedComponent
+      openItemID={openItemId}
+      toggleOpen={setOpenItemId}
+      {...props}
+    />
+  )
 }
 
 export default originalComponent
