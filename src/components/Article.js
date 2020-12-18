@@ -1,21 +1,18 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 
-class Article extends PureComponent {
-  render() {
-    const { article, isOpen } = this.props
-    return (
+const Article = (props) => {
+  const { article, isOpen, toggleOpen } = props
+  const handleBtnClick = () => toggleOpen(article.id)
+
+  return (
+    <div>
       <div>
-        <div>
-          <h3>{article.title}</h3>
-          <button onClick={this.handleBtnClick}>
-            {isOpen ? 'close' : 'open'}
-          </button>
-        </div>
-        {isOpen && <section>{article.text}</section>}
+        <h3>{article.title}</h3>
+        <button onClick={handleBtnClick}>{isOpen ? 'close' : 'open'}</button>
       </div>
-    )
-  }
-  handleBtnClick = () => this.props.toggleOpen(this.props.article.id)
+      {isOpen && <section>{article.text}</section>}
+    </div>
+  )
 }
 
-export default Article
+export default React.memo(Article)

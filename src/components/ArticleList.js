@@ -6,7 +6,7 @@ const ArticleList = ({ articles, openItemID, toggleOpen }) => {
   const articleElements = articles.map((article) => (
     <li key={article.id}>
       <Article
-        isOpen={openItemID === article.id}
+        isOpen={openItemID === article.id} //false
         article={article}
         toggleOpen={toggleOpen}
       />
