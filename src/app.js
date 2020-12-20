@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
-import articles from './fixtures'
-import ArticleList from './components/ArticleList'
-import Select from 'react-select'
+import React, { Component } from 'react';
+import articles from './fixtures';
+import ArticleList from './components/ArticleList';
+import Select from 'react-select';
+import DayPicker from "react-day-picker";
+import "react-day-picker/lib/style.css";
 
 class App extends Component {
   state = {
     openItem: null
   }
-
   render() {
     return (
       <div>
@@ -16,6 +17,7 @@ class App extends Component {
           value={this.state.openItem}
           onChange={this.handleSelect}
         />
+        <DayPicker />
         <ArticleList articles={articles} />
       </div>
     )
@@ -28,7 +30,7 @@ class App extends Component {
     }))
   }
 
-  handleSelect = (openItem) => this.setState({ openItem: openItem })
+  handleSelect = (openItem) => this.setState({ openItem: openItem });
 }
 
-export default App
+export default App;

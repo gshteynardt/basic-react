@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 const originalComponent = (WrappedComponent) => (props) => {
-  const [openItemId, setOpenItemId] = useState(null)
+  const [openItemId, setOpenItemId] = useState(null);
 
   const toggleOpenItem = (openItemId) => {
-    setOpenItemId((prevValue) => (prevValue === openItemId ? null : openItemId))
+    setOpenItemId(prevValue => prevValue === openItemId ? null : openItemId);
   }
 
   return (
@@ -16,4 +16,4 @@ const originalComponent = (WrappedComponent) => (props) => {
   )
 }
 
-export default originalComponent
+export default originalComponent;

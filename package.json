@@ -1,53 +1,48 @@
 {
-  "name": "basic-10-09",
+  "name": "basic-react",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001/",
+  "plugins": [
+    "react-hooks"
+  ],
   "dependencies": {
-    "connected-react-router": "^4.5.0",
-    "history": "^4.7.2",
-    "immutable": "^4.0.0-rc.10",
-    "jest-cli": "^20.0.4",
-    "prop-types": "^15.6.2",
-    "react": "^16.14.0",
-    "react-addons-css-transition-group": "^15.6.2",
-    "react-day-picker": "^7.2.4",
-    "react-dom": "^16.5.0",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.5",
-    "react-select": "^2.0.0",
-    "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0",
-    "reselect": "^3.0.1",
-    "select": "^1.1.2"
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "eslint-plugin-react-hooks": "^0.0.0-8e5adfbd7",
+    "react": "^17.0.1",
+    "react-day-picker": "^7.4.8",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.1",
+    "react-select": "^3.1.1",
+    "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"npm run api\"",
-    "api": "node simple_api/server.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "eslint .",
-    "prettier": "prettier --write \"src/**/*.js\"",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
-  "devDependencies": {
-    "concurrently": "^3.6.0",
-    "enzyme": "^3.6.0",
-    "enzyme-adapter-react-16": "^1.5.0",
-    "husky": "^1.0.0-rc.6",
-    "lint-staged": "^7.1.0",
-    "prettier": "^1.12.1"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "lint-staged": {
-    "*.js": [
-      "npm run prettier",
-      "git add"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   }
 }

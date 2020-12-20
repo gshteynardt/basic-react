@@ -1,18 +1,29 @@
-import React from 'react'
+import React, { useCallback } from 'react';
+import CommentList from "./CommentList";
 
 const Article = (props) => {
-  const { article, isOpen, toggleOpen } = props
-  const handleBtnClick = () => toggleOpen(article.id)
-
+  const { article, isOpen, toggleOpen } = props;
+  const handleBtnClick = useCallback(() => toggleOpen(article.id), [article.id, toggleOpen]);
   return (
     <div>
       <div>
         <h3>{article.title}</h3>
-        <button onClick={handleBtnClick}>{isOpen ? 'close' : 'open'}</button>
+        <button
+          onClick={handleBtnClick}
+        >
+          {isOpen ? 'close' : 'open'}
+        </button>
       </div>
-      {isOpen && <section>{article.text}</section>}
+      {isOpen &&
+      <div>
+        <section>{article.text}</section>
+        <CommentList
+          comments={article.comments}
+        />
+      </div>
+      }
     </div>
   )
 }
 
-export default React.memo(Article)
+export default Article;
