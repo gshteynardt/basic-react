@@ -1,9 +1,11 @@
-import React, { useCallback } from 'react';
+import React, { useCallback } from "react";
 import CommentList from "./CommentList";
+import accordion from "../decorators/accordion";
 
-const Article = (props) => {
-  const { article, isOpen, toggleOpen } = props;
+const Article = ({ article, openItemID, toggleOpen }) => {
+
   const handleBtnClick = useCallback(() => toggleOpen(article.id), [article.id, toggleOpen]);
+
   return (
     <div>
       <div>
@@ -11,10 +13,10 @@ const Article = (props) => {
         <button
           onClick={handleBtnClick}
         >
-          {isOpen ? 'close' : 'open'}
+          {openItemID ? 'close' : 'open'}
         </button>
       </div>
-      {isOpen &&
+      {openItemID &&
       <div>
         <section>{article.text}</section>
         <CommentList
@@ -25,5 +27,6 @@ const Article = (props) => {
     </div>
   )
 }
+const ArticleWithAccordion = accordion(Article);
 
-export default Article;
+export default ArticleWithAccordion;

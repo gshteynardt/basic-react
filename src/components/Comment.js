@@ -1,26 +1,19 @@
-import React, { useCallback } from 'react';
-import commentWithToggle from "../decorators/commentWithToggle";
+import React from 'react';
+import PropTypes from "prop-types";
 
-const Comment = ({ comment, openItemID, toggleOpenItem }) => {
+const Comment = ({ comment }) => {
 const { text, user } = comment;
 
-  const handleBtnClick = useCallback(() => toggleOpenItem(), [toggleOpenItem]);
   return (
-    <div>
-      <div>
-        <h3>{user}</h3>
-        <button
-          onClick={handleBtnClick}
-        >
-          {openItemID ? 'close' : 'open'}
-        </button>
-      </div>
-
-      <section>
-        {openItemID && <p>{text}</p>}
-      </section>
-    </div>
+    <>
+      <h3>{user}</h3>
+      <p>{text}</p>
+    </>
   )
 }
 
-export default commentWithToggle(Comment);
+Comment.propTypes = {
+  comment: PropTypes.object.isRequired,
+}
+
+export default Comment;
