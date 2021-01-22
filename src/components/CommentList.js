@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 const CommentList = ({ comments, openItemID, toggleOpenItem  }) => {
   const handleBtnClick = useCallback(() => toggleOpenItem(), [toggleOpenItem]);
 
-  if(!comments || comments.length) return '';
+  if(!comments || !comments.length) return '';
 
   const commentElements = comments.map(comment => (
     <li key={ comment.id }>
