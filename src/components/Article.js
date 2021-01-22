@@ -1,11 +1,11 @@
 import React, { useCallback } from "react";
+import PropTypes from "prop-types";
 import CommentList from "./CommentList";
 import accordion from "../decorators/accordion";
 
 const Article = ({ article, openItemID, toggleOpen }) => {
 
   const handleBtnClick = useCallback(() => toggleOpen(article.id), [article.id, toggleOpen]);
-
   return (
     <div>
       <div>
@@ -17,16 +17,29 @@ const Article = ({ article, openItemID, toggleOpen }) => {
         </button>
       </div>
       {openItemID &&
-      <div>
+      <div className={'test__article_body'}>
         <section>{article.text}</section>
-        <CommentList
-          comments={article.comments}
-        />
+          <CommentList
+            comments={article.comments}
+          />
       </div>
       }
     </div>
   )
 }
+
+Article.propTypes = {
+  article: PropTypes.shape({
+    comments: PropTypes.array,
+    date: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }),
+  openItemID: PropTypes.string,
+  toggleOpen: PropTypes.func.isRequired,
+}
+
 const ArticleWithAccordion = accordion(Article);
 
 export default ArticleWithAccordion;

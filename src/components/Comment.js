@@ -13,7 +13,10 @@ const { text, user } = comment;
 }
 
 Comment.propTypes = {
-  comment: PropTypes.object.isRequired,
+  comment: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    user: PropTypes.string.isRequired,
+  }),
 }
 
 export default Comment;
