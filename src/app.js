@@ -4,11 +4,13 @@ import ArticleList from './components/ArticleList';
 import Select from 'react-select';
 import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
+import Counter from "./components/Counter";
 
 class App extends Component {
   state = {
     openItem: null
   }
+
   render() {
     return (
       <div>
@@ -18,6 +20,7 @@ class App extends Component {
           onChange={this.handleSelect}
         />
         <DayPicker />
+        <Counter/>
         <ArticleList articles={articles} />
       </div>
     )

@@ -16,14 +16,13 @@ const Article = ({ article, openItemID, toggleOpen }) => {
           {openItemID ? 'close' : 'open'}
         </button>
       </div>
-      {openItemID &&
-      <div className={'test__article_body'}>
-        <section>{article.text}</section>
-          <CommentList
-            comments={article.comments}
-          />
-      </div>
-      }
+      { openItemID &&
+        <div className={'test__article_body'}>
+          <section>{article.text}</section>
+            <CommentList
+              comments={article.comments}
+            />
+        </div> }
     </div>
   )
 }
