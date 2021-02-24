@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import articles from './fixtures';
 import ArticleList from './components/ArticleList';
 import Select from 'react-select';
-import DayPicker from "react-day-picker";
-import "react-day-picker/lib/style.css";
 import Counter from "./components/Counter";
+import DatePicker from "./components/DatePicker";
 
 class App extends Component {
   state = {
@@ -19,7 +18,7 @@ class App extends Component {
           value={this.state.openItem}
           onChange={this.handleSelect}
         />
-        <DayPicker />
+        <DatePicker/>
         <Counter/>
         <ArticleList articles={articles} />
       </div>
