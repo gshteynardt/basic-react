@@ -23,7 +23,7 @@ const mapStateToProps = (storeState) => ({
 })
 
 const mapDispatchToProps = {
-  handleIncrement: increment,
+  handleIncrement: increment, //from action creator
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter)

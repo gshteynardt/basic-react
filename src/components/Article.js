@@ -1,11 +1,15 @@
 import React, { useCallback } from "react";
 import PropTypes from "prop-types";
+import { connect } from 'react-redux';
+import { deleteArticle } from "../ac/index";
 import CommentList from "./CommentList";
 import accordion from "../decorators/accordion";
 
-const Article = ({ article, openItemID, toggleOpen }) => {
+const Article = ({ article, openItemID, toggleOpen, deleteArticle }) => {
 
   const handleBtnClick = useCallback(() => toggleOpen(article.id), [article.id, toggleOpen]);
+  const handleDelete = () => deleteArticle(article.id);
+
   return (
     <div>
       <div>
@@ -14,6 +18,9 @@ const Article = ({ article, openItemID, toggleOpen }) => {
           onClick={handleBtnClick}
         >
           {openItemID ? 'close' : 'open'}
+        </button>
+        <button onClick={ handleDelete }>
+          delete me
         </button>
       </div>
       { openItemID &&
@@ -41,4 +48,4 @@ Article.propTypes = {
 
 const ArticleWithAccordion = accordion(Article);
 
-export default ArticleWithAccordion;
+export default connect(null, { deleteArticle })(ArticleWithAccordion);

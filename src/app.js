@@ -20,7 +20,7 @@ class App extends Component {
         />
         <DatePicker/>
         <Counter/>
-        <ArticleList articles={articles} />
+        <ArticleList/>
       </div>
     )
   }
