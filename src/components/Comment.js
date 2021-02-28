@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import { connect } from 'react-redux';
 
 const Comment = ({ comment }) => {
+  console.log(comment);
 const { text, user } = comment;
 
   return (
     <>
-      <h3>{user}</h3>
+      <h3>by {user}</h3>
       <p>{text}</p>
     </>
   )
@@ -19,4 +21,6 @@ Comment.propTypes = {
   }),
 }
 
-export default Comment;
+export default connect((state, ownProps) => ({
+  comment: state.comments.find(comment => comment.id === ownProps.id),
+}))(Comment);

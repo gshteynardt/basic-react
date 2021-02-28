@@ -8,10 +8,10 @@ const CommentList = ({ comments, openItemID, toggleOpenItem  }) => {
 
   if(!comments || !comments.length) return '';
 
-  const commentElements = comments.map(comment => (
-    <li key={ comment.id }>
+  const commentElements = comments.map(id => (
+    <li key={ id }>
       { openItemID && <Comment
-        comment={ comment }
+        id={ id }
       >
       </ Comment> }
     </li>
