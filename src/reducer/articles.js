@@ -12,4 +12,3 @@ export default (articlesState = defaultArticles, action) => {
   return articlesState;
 }
 
-console.log(defaultArticles)

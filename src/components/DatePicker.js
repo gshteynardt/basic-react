@@ -1,56 +1,28 @@
-import { useState } from "react";
-import DayPicker from 'react-day-picker';
-import 'react-day-picker/lib/style.css';
+import DayPicker, { DateUtils } from 'react-day-picker';
+import { connect } from 'react-redux';
+import 'react-day-picker/lib/style.css'
 
-const DatePicker = () => {
-  const [ state, setState ] = useState( {
-    from: undefined,
-      to: undefined
-  })
+import { changeDateRange } from '../ac';
 
-  const isEqualDates = (date1, date2) => date1 && date2 && new Date(date1).getTime() === new Date(date2).getTime();
-
-  const handleDayClick = (day, { disabled }) => {
-    if (disabled) return;
-
-    let from = state.from;
-    let to = state.to;
-
-    if (isEqualDates(state.from, day)) {
-      from = undefined;
-    } else if (isEqualDates(state.to, day)) {
-      to = undefined;
-    } else if (!state.from) {
-      from = day;
-    } else {
-      to = day;
-    }
-
-    setState(state => ({
-        ...state,
-        from,
-        to,
-    }));
+const DateRange = ({ changeDateRange, range }) => {
+  const { from, to } = range;
+  const handleDayClick = (day) => {
+   changeDateRange(DateUtils.addDayToRange(day, range));
   }
+  const selectedRange = from && to && `${from.toDateString()} - ${to.toDateString()}`;
 
-
-    const text =
-        state.from && state.to
-        ? `Selected days: ${state.from.toLocaleDateString()} - ${state.to.toLocaleDateString()}.`
-        : 'Please select range of days.'
-    return (
-      <div>
-        <DayPicker
-          onDayClick={handleDayClick}
-          modifiers={state}
-          disabledDays={{
-            before: state.from,
-            after: state.to
-          }}
-        />
-        <p>{text}</p>
-      </div>
-    )
+  return (
+    <div className="date-range">
+      <DayPicker
+        onDayClick={handleDayClick}
+        selectedDays={day => DateUtils.isDayInRange(day, { from, to })}
+      />
+      { selectedRange }
+    </div>
+  )
 };
 
-export default DatePicker;
+export default connect(state => ({
+  range: state.filters.dateRange,
+}),
+  { changeDateRange })(DateRange);

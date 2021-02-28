@@ -1,38 +1,30 @@
 import React, { Component } from 'react';
-import articles from './fixtures';
+import { connect } from 'react-redux';
+
+import Select from "./components/Select";
 import ArticleList from './components/ArticleList';
-import Select from 'react-select';
 import Counter from "./components/Counter";
 import DatePicker from "./components/DatePicker";
 
 class App extends Component {
   state = {
-    openItem: null
+    openItem: null,
   }
 
   render() {
+    console.log(this.state.openItem)
     return (
       <div>
-        <Select
-          options={this.options}
-          value={this.state.openItem}
-          onChange={this.handleSelect}
-        />
-        <DatePicker/>
-        <Counter/>
-        <ArticleList/>
+        <Select />
+        <DatePicker />
+        <Counter />
+        <ArticleList />
       </div>
     )
   }
-
-  get options() {
-    return articles.map((article) => ({
-      label: article.title,
-      value: article.id
-    }))
-  }
-
   handleSelect = (openItem) => this.setState({ openItem: openItem });
 }
 
-export default App;
+export default connect(state => ({
+  options: state.options,
+}))(App);
