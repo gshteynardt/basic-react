@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import 'react-day-picker/lib/style.css'
 
 import { changeDateRange } from '../ac';
+import {dateRangeSelector} from "../selectors";
 
 const DateRange = ({ changeDateRange, range }) => {
   const { from, to } = range;
@@ -23,6 +24,6 @@ const DateRange = ({ changeDateRange, range }) => {
 };
 
 export default connect(state => ({
-  range: state.filters.dateRange,
+  range: dateRangeSelector(state),
 }),
   { changeDateRange })(DateRange);
