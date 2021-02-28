@@ -24,5 +24,5 @@ export const filtereatedArticles = createSelector(selectedSelector, dateRangeSel
 })
 
 export const createCommentSelector = () => createSelector(commentsSelector, idSelector, (comments, id) => {
-  return comments.find(comment => comment.id === id);
+  return comments[id];
 })

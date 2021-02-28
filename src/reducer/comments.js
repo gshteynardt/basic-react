@@ -1,5 +1,6 @@
-import { DELETE_ARTICLE } from '../constants';
-import { normalizedComments as defaultComments } from '../fixtures.js';
+import { normalizedComments } from '../fixtures.js';
+
+const defaultComments = normalizedComments.reduce((acc, comment) => ({...acc, [comment.id]: comment}), {});
 
 export default (commentsState = defaultComments, action) => {
   const { type } = action;
@@ -8,5 +9,5 @@ export default (commentsState = defaultComments, action) => {
     default:
       return commentsState;
   }
-  
+
 }
