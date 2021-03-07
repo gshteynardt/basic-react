@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 
-import { filtereatedArticles } from '../selectors';
+import { filtratedArticles } from '../selectors';
 import Article from './Article';
 
 const ArticleList = ({ articles }) => {
@@ -22,7 +22,7 @@ ArticleList.propTypes = {
 
 export default connect(state => {
   return {
-    articles: filtereatedArticles(state),
+    articles: filtratedArticles(state),
   }
 
 })(ArticleList);

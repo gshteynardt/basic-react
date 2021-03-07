@@ -12,7 +12,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.openItem)
     return (
       <div>
         <Select />

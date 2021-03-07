@@ -2,18 +2,21 @@ import React, { useCallback } from 'react';
 import Comment from './Comment';
 import commentWithToggle from "../decorators/commentWithToggle";
 import PropTypes from "prop-types";
+import CommentForm from "./Form/Form";
 
-const CommentList = ({ comments, openItemID, toggleOpenItem  }) => {
+const CommentList = ({ openItemID, toggleOpenItem, article  }) => {
   const handleBtnClick = useCallback(() => toggleOpenItem(), [toggleOpenItem]);
+  const { comments, id } = article;
 
   if(!comments || !comments.length) return '';
 
   const commentElements = comments.map(id => (
     <li key={ id }>
-      { openItemID && <Comment
+      { openItemID &&
+      <Comment
         id={ id }
-      >
-      </ Comment> }
+      />
+      }
     </li>
   ));
 
@@ -24,6 +27,7 @@ const CommentList = ({ comments, openItemID, toggleOpenItem  }) => {
       {openItemID ? 'close comments' : 'open comments'}
     </button>
     { commentElements }
+    <CommentForm articleId = {id}/>
   </ul> );
 }
 

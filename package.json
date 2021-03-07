@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^12.1.10",
     "enzyme-adapter-react-16": "^1.15.6",
     "eslint-plugin-react-hooks": "^0.0.0-8e5adfbd7",
+    "immutable": "^4.0.0-rc.12",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-day-picker": "^7.4.8",

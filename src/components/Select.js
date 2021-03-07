@@ -2,10 +2,9 @@ import PropTypes from 'prop-types'
 import Select from 'react-select'
 import { connect } from 'react-redux'
 import { changeSelection } from '../ac'
-import { articlesSelector, selectedSelector } from "../selectors";
+import { articlesListSelector, selectedSelector } from "../selectors";
 
 const SelectFilter = ({ articles, changeSelection}) => {
-
   const handleChange = (selected) => changeSelection(selected);
 
     const options = articles.map((article) => ({
@@ -30,7 +29,7 @@ Select.propTypes = {
 export default connect(
   state => ({
     selected: selectedSelector(state),
-    articles: articlesSelector(state),
+    articles: articlesListSelector(state),
   }),
   { changeSelection }
 )(SelectFilter)

@@ -27,7 +27,7 @@ const Article = ({ article, openItemID, toggleOpen, deleteArticle }) => {
         <div className={'test__article_body'}>
           <section>{article.text}</section>
             <CommentList
-              comments={article.comments}
+              article={article}
             />
         </div> }
     </div>
