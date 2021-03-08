@@ -1,0 +1,16 @@
+{
+  "name": "simple_api",
+  "version": "0.0.1",
+  "description": "core",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "core-js": "^0.9.6",
+    "express": "^4.17.1",
+    "npm": "^7.6.1",
+    "object-assign": "4.0.1",
+    "qs": "^5.2.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}
