@@ -1,35 +1,35 @@
-import PropTypes from 'prop-types'
-import Select from 'react-select'
-import { connect } from 'react-redux'
-import { changeSelection } from '../ac'
+import PropTypes from "prop-types";
+import Select from "react-select";
+import { connect } from "react-redux";
+import { changeSelection } from "../ac";
 import { articlesListSelector, selectedSelector } from "../selectors";
 
-const SelectFilter = ({ articles, changeSelection}) => {
-  const handleChange = (selected) => changeSelection(selected);
+const SelectFilter = ({ articles, changeSelection }) => {
+  const handleChange = selected => changeSelection(selected);
 
-    const options = articles.map((article) => ({
-      label: article.title,
-      value: article.id
-    }));
+  const options = articles.map(article => ({
+    label: article.title,
+    value: article.id
+  }));
 
-    return (
-      <Select
-        options={options}
-        value={changeSelection}
-        onChange={handleChange}
-        isMulti
-      />
-    )
-}
+  return (
+    <Select
+      options={options}
+      value={changeSelection}
+      onChange={handleChange}
+      isMulti
+    />
+  );
+};
 
 Select.propTypes = {
   articles: PropTypes.array.isRequired
-}
+};
 
 export default connect(
   state => ({
     selected: selectedSelector(state),
-    articles: articlesListSelector(state),
+    articles: articlesListSelector(state)
   }),
   { changeSelection }
-)(SelectFilter)
+)(SelectFilter);

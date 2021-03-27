@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-const commentWithToggle = (WrappedComponent) => (props) => {
+const commentWithToggle = WrappedComponent => props => {
   const [openItemId, setOpenItemId] = useState(false);
 
   const toggleOpenItem = () => setOpenItemId(!openItemId);
-
 
   return (
     <WrappedComponent
@@ -12,7 +11,7 @@ const commentWithToggle = (WrappedComponent) => (props) => {
       toggleOpenItem={toggleOpenItem}
       {...props}
     />
-  )
-}
+  );
+};
 
 export default commentWithToggle;

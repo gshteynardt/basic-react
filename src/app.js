@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import Select from "./components/Select";
-import ArticleList from './components/ArticleList';
+import ArticleList from "./components/ArticleList";
 import Counter from "./components/Counter";
 import DatePicker from "./components/DatePicker";
 
 class App extends Component {
   state = {
-    openItem: null,
-  }
+    openItem: null
+  };
 
   render() {
     return (
@@ -19,11 +19,11 @@ class App extends Component {
         <Counter />
         <ArticleList />
       </div>
-    )
+    );
   }
-  handleSelect = (openItem) => this.setState({ openItem: openItem });
+  handleSelect = openItem => this.setState({ openItem: openItem });
 }
 
 export default connect(state => ({
-  options: state.options,
+  options: state.options
 }))(App);

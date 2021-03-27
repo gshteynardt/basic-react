@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-const originalComponent = (WrappedComponent) => (props) => {
+const originalComponent = WrappedComponent => props => {
   const [openItemId, setOpenItemId] = useState(null);
 
-  const toggleOpenItem = (openItemId) => {
-    setOpenItemId(prevValue => prevValue === openItemId ? null : openItemId);
-  }
+  const toggleOpenItem = openItemId => {
+    setOpenItemId(prevValue => (prevValue === openItemId ? null : openItemId));
+  };
 
   return (
     <WrappedComponent
@@ -13,7 +13,7 @@ const originalComponent = (WrappedComponent) => (props) => {
       toggleOpen={toggleOpenItem}
       {...props}
     />
-  )
-}
+  );
+};
 
 export default originalComponent;

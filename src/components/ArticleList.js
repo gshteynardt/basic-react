@@ -1,28 +1,37 @@
-import { connect } from 'react-redux';
+import { useEffect } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { filtratedArticles } from '../selectors';
-import Article from './Article';
+import { articlesLoadingSelector, filtratedArticles } from "../selectors";
+import Article from "./Article";
+import { Loader } from "./Loader/Loader";
+import { loadAllArticles } from "../ac";
 
-const ArticleList = ({ articles }) => {
+const ArticleList = ({ articles, fetchData, loading }) => {
+  useEffect(() => {
+    fetchData && fetchData();
+  }, [fetchData]);
+
   const articleElements = articles.map(article => (
-    <li key={article.id} className={'test__article-list--item'}>
-      <Article
-        article={article}
-      >
-      </ Article>
+    <li key={article.id} className={"test__article-list--item"}>
+      <Article article={article} />
     </li>
-  ))
-  return <ul>{articleElements}</ul>
-}
+  ));
+  if (loading) return <Loader />;
 
-ArticleList.propTypes = {
-  articles: PropTypes.array.isRequired,
+  return <ul>{articleElements}</ul>;
 };
 
-export default connect(state => {
-  return {
-    articles: filtratedArticles(state),
-  }
+ArticleList.propTypes = {
+  articles: PropTypes.array.isRequired
+};
 
-})(ArticleList);
+export default connect(
+  state => {
+    return {
+      articles: filtratedArticles(state),
+      loading: articlesLoadingSelector(state)
+    };
+  },
+  { fetchData: loadAllArticles }
+)(ArticleList);
