@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import { articlesLoadingSelector, filtratedArticles } from "../selectors";
 import Article from "./Article";
-import { Loader } from "./Loader/Loader";
+import Loader from "./Loader/Loader";
 import { loadAllArticles } from "../ac";
 
 const ArticleList = ({ articles, fetchData, loading }) => {
@@ -17,6 +17,7 @@ const ArticleList = ({ articles, fetchData, loading }) => {
       <Article article={article} />
     </li>
   ));
+
   if (loading) return <Loader />;
 
   return <ul>{articleElements}</ul>;
