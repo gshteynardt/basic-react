@@ -1,3 +1,5 @@
+import { Record } from "immutable";
+
 import {
   ADD_COMMENT,
   DELETE_ARTICLE,
@@ -5,7 +7,6 @@ import {
   SUCCESS,
   START
 } from "../constants";
-import { Record } from "immutable";
 import { arrToMap } from "./utils.js";
 
 const ArticleRecord = Record({
